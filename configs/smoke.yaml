@@ -1,0 +1,28 @@
+random_seed: 42
+
+dataset:
+  name: toy_seq_cls
+  num_samples: 512
+  seq_len: 20
+  input_dim: 6
+  num_classes: 2
+  val_ratio: 0.2
+
+model:
+  name: lstm
+  hidden_size: 64
+  num_layers: 1
+  bidirectional: false
+
+pruner:
+  name: sigmoid
+  epsilon: 0.05
+  alpha: 0.01
+  a: 0.99
+  pruning_threshold: 0.05
+  warmup_epochs: 2
+
+training:
+  batch_size: 64
+  lr: 0.001
+  epochs: 3
