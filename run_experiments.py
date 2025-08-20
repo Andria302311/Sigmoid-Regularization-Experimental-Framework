@@ -18,7 +18,8 @@ def main() -> None:
 		default=int(os.environ.get("OMP_NUM_THREADS", "1")),
 		help="Max threads for OMP/MKL backends (defaults to 1 if not set).",
 	)
-	args = parser.parse_args()
+	# Accept and ignore any unknown arguments that may be injected by IDE consoles
+	args, _unknown_args = parser.parse_known_args()
 
 	# Configure environment BEFORE importing libraries that may load OpenMP runtimes
 	os.environ.setdefault("OMP_NUM_THREADS", str(args.threads))
